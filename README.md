@@ -1,4 +1,3 @@
-# nodewithmongo
 Created a REST API using nodejs with typescript, mongodb and express.
 
 1: Clone project using following commands.
