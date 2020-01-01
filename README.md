@@ -9,7 +9,7 @@ Created a REST API using nodejs with typescript, mongodb and express.
  cd nodewithmongo
 
 3. Install dependency.
-  npm i
+  npm install
 4. Start server.
   nodemon start
   
