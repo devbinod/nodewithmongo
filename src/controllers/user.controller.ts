@@ -20,7 +20,7 @@ export class UserController {
   };
 
   save = async (req: Request, res: Response) => {
-    const resp = await this.userService.save(req.body)k;;
+    const resp = await this.userService.save(req.body);
     res.send(resp);
   };
 

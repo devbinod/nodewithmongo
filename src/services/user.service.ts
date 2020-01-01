@@ -25,9 +25,8 @@ export class UserService {
     }
 
     save = async(user:IUser) => {
-        console.log("users ..........")
-        console.log(user)
-        return await new this.model.user(user).save()
+        let users = await new this.model.user(user)
+        return users;
       
            
             
