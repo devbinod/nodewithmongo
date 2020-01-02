@@ -20,6 +20,7 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-swagger-generator": "^1.1.15",
     "install": "^0.13.0",
     "mongoose": "^5.8.3",
     "nodemon": "^2.0.2",
