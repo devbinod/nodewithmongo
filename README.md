@@ -15,3 +15,7 @@ Created a REST API using nodejs with typescript, mongodb and express.
 5. Project is running on 5000 port.
 
 
+
+
+
+![alt text](https://github.com/devbinod/nodewithmongo/blob/master/UserInfo-swagger.png?raw=true)
