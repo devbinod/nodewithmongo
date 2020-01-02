@@ -3,29 +3,20 @@ import mongoose, { MongooseDocument } from "mongoose";
 import { UserModel } from "../models/user";
 import { userSchema } from "../schemas/user.schemas";
 import { IModel } from "../models/model";
-import { IUser } from "../interfaces/user";
 import { BaseInterface } from "./common/base.interface";
 export class UserService implements BaseInterface<UserModel> {
-  async delete(id: string): Promise<Boolean> {
-    let isDelete: boolean = false;
-    await this.model.user
+  async delete(_id: string): Promise<Boolean> {
+    return await this.model.user
       .deleteOne({
-        _id: id
+        _id
       })
-      .then(() => {
-        isDelete = true;
-      })
-      .catch(() => {
-        isDelete: false;
-      });
-    return isDelete;
+      .then(() => true)
+      .catch(() => false);
   }
   async add(t: UserModel): Promise<UserModel> {
     return await new this.model.user(t).save();
   }
   async update(id: string, t: UserModel): Promise<UserModel | null> {
-    console.log(t);
-
     return await this.model.user.findByIdAndUpdate(id, t, {
       new: true
     });

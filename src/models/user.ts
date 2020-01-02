@@ -1,8 +1,6 @@
-
-import {Document} from 'mongoose'
-import {IUser} from '../interfaces/user'
-export interface UserModel extends IUser, Document{
-  //custom methods for your model would be defined here
-
-
+import { Document } from "mongoose";
+export interface UserModel extends Document {
+  firstName: string;
+  lastName: string;
+  email?: string;
 }

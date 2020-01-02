@@ -1,8 +1,13 @@
 import { Request, Response } from "express";
 import { UserService } from "../services/user.service";
 import { IModel } from "../models/model";
-import e = require("express");
-import {SUCCESS,DELETED,UPDATED,CREATED, INTERNAL_SERVER_ERROR} from '../statuscode/statuscode'
+import {
+  SUCCESS,
+  DELETED,
+  UPDATED,
+  CREATED,
+  INTERNAL_SERVER_ERROR
+} from "../statuscode/statuscode";
 export class UserController {
   private model: IModel;
   private userService: UserService;
@@ -12,7 +17,7 @@ export class UserController {
     this.userService = new UserService(this.model);
   }
 
-  findAll = async (req: Request, res: Response) => {
+  findAll = async (_: Request, res: Response) => {
     let userList = await this.userService.findAll();
     res.status(SUCCESS);
     res.json({
@@ -21,7 +26,6 @@ export class UserController {
   };
 
   findById = async (req: Request, res: Response) => {
-    console.log(req.params)
     let user = await this.userService.findById(req.params.id);
     res.status(SUCCESS);
     res.json({
