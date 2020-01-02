@@ -6,6 +6,7 @@ export class UserRoute {
     /**
      * This function comment is parsed by doctrine
      * @route GET /users
+     * @group User - Operations about user
      * @returns {object} 200 - An array of user info
      * @returns {Error}  default - Unexpected error
      */
@@ -13,6 +14,7 @@ export class UserRoute {
     /**
      * This function comment is parsed by doctrine
      * @route GET /users/{id}
+     * @group User - Operations about user
      * @param {string} id.path.required
      * @returns {object} 200 - An array of user info
      * @returns {Error}  default - Unexpected error
@@ -40,8 +42,8 @@ export class UserRoute {
     /**
      * This function comment is parsed by doctrine
      * @route POST /users
+     * @group User - Operations about user
      * @param {User.model} User.body.required - the new point
-     * @group user - Operations about user
      * @operationId retrieveUserInfo
      * @produces application/json application/xml
      * @consumes application/json application/xml
@@ -52,9 +54,9 @@ export class UserRoute {
     /**
      * This function comment is parsed by doctrine
      * @route PUT /users/{id}
+     * @group User - Operations about user
      * @param {string} id.path.required
      * @param {User.model} User.body.required - the new point
-     * @group user - Operations about user
      * @operationId retrieveUserInfo
      * @produces application/json application/xml
      * @consumes application/json application/xml
@@ -66,6 +68,7 @@ export class UserRoute {
     /**
      * This function comment is parsed by doctrine
      * @route DELETE /users/{id}
+     * @group User - Operations about user
      * @param {string} id.path.required
      * @returns {object} 204 - An array of user info
      * @returns {Error}  default - Unexpected error
