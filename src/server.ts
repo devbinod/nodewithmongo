@@ -1,7 +1,7 @@
 import app from "./app";
 const expressSwagger = require("express-swagger-generator")(app);
 
-import { PORT } from "./const/constants";
+import { PORT } from "./config/constants";
 
 let options = {
   swaggerDefinition: {
