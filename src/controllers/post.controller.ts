@@ -20,6 +20,8 @@ export class PostController {
   };
 
   save = async (req: Request, res: Response) => {
+    console.log(`called inside posts...`);
+    console.log(req.body);
     const resp = await this.postService.add(req.body);
     res.status(CREATED);
     res.send(resp);

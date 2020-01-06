@@ -6,12 +6,14 @@ import {
   loginValidation,
   registerValidation
 } from "../validation/user.validation";
+import jwt from "jsonwebtoken";
 import {
   INTERNAL_SERVER_ERROR,
   ALREADY_EXISTS,
   CREATED,
   NOT_FOUND,
-  SUCCESS
+  SUCCESS,
+  TOKEN_SECRET
 } from "../statuscode/statuscode";
 import { UserService } from "../services/user.service";
 import { UserModel } from "../models/user";
@@ -76,8 +78,14 @@ export class LoginController {
       return res.status(ALREADY_EXISTS).json({
         message: "Invalid password"
       });
-    res.status(SUCCESS).json({
-      message: "Successfully loggedin"
-    });
+
+    const token = jwt.sign({ _id: user?._id }, TOKEN_SECRET);
+    res
+      .header("x-header-token", token)
+      .status(SUCCESS)
+      .json({
+        message: "Successfully loggedin",
+        token: token
+      });
   };
 }
