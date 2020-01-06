@@ -1,6 +1,7 @@
 import { IModel } from "../models/model";
 import { LoginService } from "../services/login.service";
 import { Request, Response } from "express";
+import bcrypt from "bcryptjs";
 import {
   loginValidation,
   registerValidation
@@ -11,6 +12,7 @@ import {
   CREATED
 } from "../statuscode/statuscode";
 import { UserService } from "../services/user.service";
+import { UserModel } from "../models/user";
 
 export class LoginController {
   private model: IModel;
@@ -36,10 +38,15 @@ export class LoginController {
         message: "Email Already exists"
       });
     }
+    //hash password
+    const salt = await bcrypt.genSalt(10);
+    const hashPassword = await bcrypt.hash(req.body.password, salt);
 
+    const userModel: UserModel = req.body;
+    userModel.password = hashPassword;
     const user = await this.userService.add(req.body);
     return res.status(CREATED).json({
-      user: user
+      user: user.id
     });
   };
 }
