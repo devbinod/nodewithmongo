@@ -1,18 +1,19 @@
 import { Application } from "express";
 import { LoginController } from "../controllers/login.controller";
+import { BaseRouter } from "./baseRouter.router";
 
-export class LoginRouter {
+export class LoginRouter implements BaseRouter {
   private app: Application;
   private loginController: LoginController;
 
-  constructor($app: Application) {
-    this.app = $app;
+  constructor(app: Application) {
+    this.app = app;
 
     this.loginController = new LoginController();
-    this.route();
+    this.initRoute();
   }
 
-  route() {
+  initRoute(): void {
     this.app.post("/v1/register", this.loginController.register);
     this.app.post("/v1/login", this.loginController.login);
   }

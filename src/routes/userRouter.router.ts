@@ -1,8 +1,9 @@
 import express, { Application } from "express";
 import { UserController } from "../controllers/user.controller";
+import { BaseRouter } from "./baseRouter.router";
 
-export class UserRoute {
-  routes() {
+export class UserRoute implements BaseRouter {
+  initRoute() {
     /**
      * This function comment is parsed by doctrine
      * @route GET /users
@@ -79,9 +80,9 @@ export class UserRoute {
   private app: Application;
   private userController: UserController;
 
-  constructor($app: Application, userController: UserController) {
-    this.app = $app;
+  constructor(app: Application) {
+    this.app = app;
     this.userController = new UserController();
-    this.routes();
+    this.initRoute();
   }
 }
