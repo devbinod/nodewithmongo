@@ -9,7 +9,9 @@ import {
 import {
   INTERNAL_SERVER_ERROR,
   ALREADY_EXISTS,
-  CREATED
+  CREATED,
+  NOT_FOUND,
+  SUCCESS
 } from "../statuscode/statuscode";
 import { UserService } from "../services/user.service";
 import { UserModel } from "../models/user";
@@ -46,7 +48,36 @@ export class LoginController {
     userModel.password = hashPassword;
     const user = await this.userService.add(req.body);
     return res.status(CREATED).json({
-      user: user.id
+      user: user._id
+    });
+  };
+
+  login = async (req: Request, res: Response) => {
+    const { error } = loginValidation(req);
+    if (error) {
+      res.status(INTERNAL_SERVER_ERROR).json({
+        error: error.details[0].message
+      });
+    }
+
+    let user = await this.loginService.findByEmail(req.body.email);
+    if (!user)
+      res.status(NOT_FOUND).json({
+        message: "Email or password doesn't exits"
+      });
+
+    // password check
+
+    const validPassword = await bcrypt.compare(
+      req.body.password,
+      user?.password as string
+    );
+    if (!validPassword)
+      return res.status(ALREADY_EXISTS).json({
+        message: "Invalid password"
+      });
+    res.status(SUCCESS).json({
+      message: "Successfully loggedin"
     });
   };
 }

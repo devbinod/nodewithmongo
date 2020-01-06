@@ -21,7 +21,7 @@ export const registerValidation = (req: Request) => {
   return joi.validate(req.body, userSchema);
 };
 
-export const loginValidation = (data: Request) => {
+export const loginValidation = (req: Request) => {
   const loginSchema = {
     email: joi.string().required(),
     password: joi
@@ -30,5 +30,5 @@ export const loginValidation = (data: Request) => {
       .required()
   };
 
-  return joi.validate(data, loginSchema);
+  return joi.validate(req.body, loginSchema);
 };

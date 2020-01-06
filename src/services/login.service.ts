@@ -11,7 +11,7 @@ export class LoginService {
     this.model.user = mongoose.model<UserModel>("user", userSchema);
   }
 
-  findByEmail = async (email: string) => {
+  findByEmail = async (email: string): Promise<UserModel | null> => {
     return await this.model.user.findOne({ email: email });
   };
 }

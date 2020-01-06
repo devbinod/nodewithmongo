@@ -14,5 +14,6 @@ export class LoginRouter {
 
   route() {
     this.app.post("/v1/register", this.loginController.register);
+    this.app.post("/v1/login", this.loginController.login);
   }
 }
