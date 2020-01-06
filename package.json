@@ -12,19 +12,28 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/bcryptjs": "^2.4.2",
     "@types/body-parser": "^1.17.1",
     "@types/cors": "^2.8.6",
     "@types/express": "^4.17.2",
+    "@types/joi": "^14.3.4",
     "@types/mongoose": "^5.5.36",
     "@types/nodemon": "^1.19.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-swagger-generator": "^1.1.15",
     "install": "^0.13.0",
+    "joi": "^14.3.1",
     "mongoose": "^5.8.3",
-    "nodemon": "^2.0.2",
     "npm": "^6.13.4",
     "ts-node": "^8.5.4"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.25",
+    "@types/supertest": "^2.0.8",
+    "jest": "^24.9.0",
+    "supertest": "^4.0.2"
   }
 }

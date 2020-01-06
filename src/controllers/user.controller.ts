@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { UserService } from "../services/user.service";
 import { IModel } from "../models/model";
+import joi from "joi";
 import {
   SUCCESS,
   DELETED,
@@ -8,6 +9,7 @@ import {
   CREATED,
   INTERNAL_SERVER_ERROR
 } from "../statuscode/statuscode";
+import { registerValidation } from "../validation/user.validation";
 export class UserController {
   private model: IModel;
   private userService: UserService;
@@ -34,9 +36,17 @@ export class UserController {
   };
 
   save = async (req: Request, res: Response) => {
-    const resp = await this.userService.add(req.body);
-    res.status(CREATED);
-    res.send(resp);
+    const { error } = registerValidation(req.body);
+
+    if (error) {
+      return res
+        .status(INTERNAL_SERVER_ERROR)
+        .send({ error: error.details[0].message });
+    } else {
+      const resp = await this.userService.add(req.body);
+      res.status(CREATED);
+      res.send(resp);
+    }
   };
 
   update = async (req: Request, res: Response) => {

@@ -4,7 +4,7 @@ export const postSchema = new Schema(
   {
     id: Object,
     body: String,
-    user: Object,
+    userId: { type: Schema.Types.ObjectId, ref: "User" },
     commentCount: Number,
     likeCount: Number,
     userImage: String

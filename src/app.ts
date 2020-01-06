@@ -6,6 +6,7 @@ import { DBConfig } from "./config/DBConfig";
 import { UserRoute } from "./routes/baseRouter.router";
 import { PostRouter } from "./routes/postRouter.router";
 import { PostController } from "./controllers/post.controller";
+import { LoginRouter } from "./routes/loginRouter.router";
 class App {
   public app: Application;
   private userController: UserController;
@@ -13,6 +14,7 @@ class App {
   private dbConfig: DBConfig;
   private userRouter: UserRoute;
   private postRouter: PostRouter;
+  private loginRouter: LoginRouter;
   private postController: PostController;
 
   constructor() {
@@ -23,6 +25,7 @@ class App {
     this.postController = new PostController();
     this.userRouter = new UserRoute(this.app, this.userController);
     this.postRouter = new PostRouter(this.app, this.postController);
+    this.loginRouter = new LoginRouter(this.app);
     this.bootstrap();
   }
 

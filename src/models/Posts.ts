@@ -2,7 +2,7 @@ import { Document } from "mongoose";
 
 export interface PostModel extends Document {
   body: string;
-  user: string;
+  userId: string;
   commentCount?: number;
   likeCount?: number;
   userImage?: string;
