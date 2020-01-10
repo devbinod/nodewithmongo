@@ -1,10 +1,12 @@
 import mongoosh, { Schema } from "mongoose";
+import { POST, USER } from "./schemaConst";
+import { PostModel } from "../models/Posts";
 
-export const postSchema = new Schema(
+const schema: Schema = new Schema(
   {
     id: Object,
     body: String,
-    userId: { type: Schema.Types.ObjectId, ref: "User" },
+    userId: { type: Schema.Types.ObjectId, ref: `${USER}` },
     commentCount: Number,
     likeCount: Number,
     userImage: String
@@ -12,4 +14,4 @@ export const postSchema = new Schema(
   { timestamps: true }
 );
 
-mongoosh.model("posts", postSchema);
+export const postSchema = mongoosh.model<PostModel>(`${POST}`, schema);

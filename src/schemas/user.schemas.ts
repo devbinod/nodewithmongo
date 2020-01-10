@@ -1,6 +1,8 @@
 import mongoose, { Schema } from "mongoose";
+import { USER } from "./schemaConst";
+import { UserModel } from "../models/user";
 
-export let userSchema: Schema = new Schema(
+const schema: Schema = new Schema(
   {
     id: Object,
     firstName: {
@@ -22,4 +24,4 @@ export let userSchema: Schema = new Schema(
   },
   { timestamps: true }
 );
-mongoose.model("User", userSchema);
+export const userSchema = mongoose.model<UserModel>(`${USER}`, schema);

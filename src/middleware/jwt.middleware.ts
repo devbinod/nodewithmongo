@@ -30,7 +30,6 @@ export class JWTMiddleWare {
         message: "Token Invalid"
       });
     }
-    console.log(`called.............`);
     next();
   };
 }

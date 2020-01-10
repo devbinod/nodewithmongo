@@ -4,12 +4,10 @@ import { PostService } from "../services/post.service";
 import { SUCCESS, CREATED } from "../statuscode/statuscode";
 
 export class PostController {
-  private model: IModel;
   private postService: PostService;
 
   constructor() {
-    this.model = Object();
-    this.postService = new PostService(this.model);
+    this.postService = new PostService();
   }
 
   findAll = async (_: Request, res: Response) => {

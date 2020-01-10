@@ -3,12 +3,13 @@ import { PostModel } from "../models/Posts";
 import { IModel } from "../models/model";
 import mongoose from "mongoose";
 import { postSchema } from "../schemas/post.schemas";
+import { POST } from "../schemas/schemaConst";
 export class PostService implements BaseInterface<PostModel> {
   private model: IModel;
 
-  constructor(model: IModel) {
-    this.model = model;
-    this.model.post = mongoose.model<PostModel>("posts", postSchema);
+  constructor() {
+    this.model = Object();
+    this.model.post = postSchema;
   }
 
   async add(t: PostModel): Promise<PostModel> {

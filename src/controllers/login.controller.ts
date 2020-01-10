@@ -19,14 +19,12 @@ import { UserService } from "../services/user.service";
 import { UserModel } from "../models/user";
 
 export class LoginController {
-  private model: IModel;
   private loginService: LoginService;
   private userService: UserService;
 
   constructor() {
-    this.model = Object();
-    this.loginService = new LoginService(this.model);
-    this.userService = new UserService(this.model);
+    this.loginService = new LoginService();
+    this.userService = new UserService();
   }
 
   register = async (req: Request, res: Response) => {

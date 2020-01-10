@@ -11,12 +11,10 @@ import {
 } from "../statuscode/statuscode";
 import { registerValidation } from "../validation/user.validation";
 export class UserController {
-  private model: IModel;
   private userService: UserService;
 
   constructor() {
-    this.model = Object();
-    this.userService = new UserService(this.model);
+    this.userService = new UserService();
   }
 
   findAll = async (_: Request, res: Response) => {

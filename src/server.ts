@@ -12,6 +12,7 @@ import { LoginRouter } from "./routes/loginRouter.router";
 import { JWTMiddleWare } from "./middleware/jwt.middleware";
 import { MiddleWare } from "./middleware/middleware";
 import { DBConfig } from "./config/DBConfig";
+import { CommentRouter } from "./routes/commentRouter.router";
 
 let options = {
   swaggerDefinition: {
@@ -40,6 +41,7 @@ expressSwagger(options);
 let initializeRoute = (_: Request, __: Response, next: any) => {
   new UserRoute(app);
   new PostRouter(app);
+  new CommentRouter(app);
   next();
 };
 
