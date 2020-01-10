@@ -6,4 +6,5 @@ export interface CommentModel extends Document {
   userId: string;
   comment: string;
   isLike: boolean;
+  isDislike: boolean;
 }

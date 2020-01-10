@@ -13,7 +13,7 @@ export class PostController {
   findAll = async (_: Request, res: Response) => {
     const postList = await this.postService.findAll();
     return await res.status(SUCCESS).json({
-      postList
+      data: postList
     });
   };
 

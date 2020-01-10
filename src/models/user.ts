@@ -4,4 +4,5 @@ export interface UserModel extends Document {
   lastName: string;
   email?: string;
   password?: string;
+  userImageUrl?: string;
 }

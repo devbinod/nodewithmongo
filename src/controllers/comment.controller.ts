@@ -18,13 +18,13 @@ export class CommentController {
   findAll = async (_: Request, res: Response) => {
     const comments = await this.commentService.findAll();
     res.status(SUCCESS).json({
-      comments
+      data: comments
     });
   };
   findById = async (req: Request, res: Response) => {
     const comment = await this.commentService.findById(req.params.id);
     res.status(SUCCESS).json({
-      comment
+      data: comment
     });
   };
   save = async (req: Request, res: Response) => {

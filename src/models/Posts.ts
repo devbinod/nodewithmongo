@@ -5,5 +5,5 @@ export interface PostModel extends Document {
   userId: string;
   commentCount?: number;
   likeCount?: number;
-  userImage?: string;
+  imageUrl?: string;
 }

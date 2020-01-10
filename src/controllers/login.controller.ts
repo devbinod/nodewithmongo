@@ -28,7 +28,7 @@ export class LoginController {
   }
 
   register = async (req: Request, res: Response) => {
-    const { error } = registerValidation(req);
+    const { error } = registerValidation(req.body);
     if (error) {
       return res
         .status(INTERNAL_SERVER_ERROR)
@@ -53,7 +53,7 @@ export class LoginController {
   };
 
   login = async (req: Request, res: Response) => {
-    const { error } = loginValidation(req);
+    const { error } = loginValidation(req.body);
     if (error) {
       res.status(INTERNAL_SERVER_ERROR).json({
         error: error.details[0].message

@@ -1,7 +1,8 @@
 import joi from "joi";
 import { Request } from "express";
+import { UserModel } from "../models/user";
 
-export const registerValidation = (req: Request) => {
+export const registerValidation = (user: UserModel) => {
   const userSchema = {
     firstName: joi
       .string()
@@ -15,13 +16,14 @@ export const registerValidation = (req: Request) => {
     password: joi
       .string()
       .min(3)
-      .required()
+      .required(),
+    userImageUrl: joi.string().required()
   };
 
-  return joi.validate(req.body, userSchema);
+  return joi.validate(user, userSchema);
 };
 
-export const loginValidation = (req: Request) => {
+export const loginValidation = (user: UserModel) => {
   const loginSchema = {
     email: joi.string().required(),
     password: joi
@@ -30,5 +32,5 @@ export const loginValidation = (req: Request) => {
       .required()
   };
 
-  return joi.validate(req.body, loginSchema);
+  return joi.validate(user, loginSchema);
 };

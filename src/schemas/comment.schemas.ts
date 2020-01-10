@@ -8,7 +8,8 @@ const schema: Schema = new Schema(
     userId: { type: Schema.Types.ObjectId, ref: `${USER}` },
     postId: { type: Schema.Types.ObjectId, ref: `${POST}` },
     comment: String,
-    isLike: Boolean
+    isLike: Boolean,
+    isDislike: Boolean
   },
   { timestamps: true }
 );

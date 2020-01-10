@@ -5,6 +5,7 @@ import { LikeDislikeModel } from "../models/likeDislike";
 const schema: Schema = new Schema(
   {
     isLike: Boolean,
+    isDislike: Boolean,
     postId: { type: Schema.Types.ObjectId, ref: `${POST}` },
     userId: { type: Schema.Types.ObjectId, ref: `${USER}` }
   },
