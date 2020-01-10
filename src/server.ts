@@ -19,11 +19,11 @@ import { LikeDislikeRouter } from "./routes/likeDislikeRouter.router";
 let options = {
   swaggerDefinition: {
     info: {
-      description: "This is a sample server",
-      title: "Swagger",
+      description: "social Media App",
+      title: "Social Media App",
       version: "1.0.0"
     },
-    host: "localhost:3000",
+    host: "localhost:5000",
     basePath: "/v1",
     produces: ["application/json", "application/xml"],
     schemes: ["http", "https"],
@@ -37,7 +37,7 @@ let options = {
     }
   },
   basedir: __dirname, //app absolute path
-  files: ["../src/routes/baseRouter.*.ts"] //Path to the API handle folder
+  files: ["../src/routes/*.*.ts"] //Path to the API handle folder
 };
 expressSwagger(options);
 let initializeRoute = (_: Request, __: Response, next: any) => {
@@ -51,7 +51,7 @@ let initializeRoute = (_: Request, __: Response, next: any) => {
 let initializeMiddleWare = (_: Request, __: Response, next: any) => {
   new MiddleWare(app);
   new LoginRouter(app);
-  new JWTMiddleWare(app);
+  // new JWTMiddleWare(app);
   new DBConfig();
   next();
 };
