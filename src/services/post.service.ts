@@ -1,30 +1,32 @@
 import { BaseInterface } from "./common/base.interface";
 import { PostModel } from "../models/Posts";
 import { IModel } from "../models/model";
-import mongoose from "mongoose";
+import mongoose, { Model } from "mongoose";
 import { postSchema } from "../schemas/post.schemas";
 import { POST } from "../schemas/schemaConst";
 export class PostService implements BaseInterface<PostModel> {
-  private model: IModel;
+  private post: Model<PostModel>;
 
   constructor() {
-    this.model = Object();
-    this.model.post = postSchema;
+    this.post = postSchema;
   }
 
-  async save(t: PostModel): Promise<PostModel> {
-    return await new this.model.post(t).save();
+  async save(model: PostModel): Promise<PostModel> {
+    return await new this.post(model).save();
   }
-  update(id: string, t: PostModel): Promise<PostModel | null> {
-    throw new Error("Method not implemented.");
+  async update(_id: string, model: PostModel): Promise<PostModel | null> {
+    return await this.post.findByIdAndUpdate(_id, model, { new: true });
   }
-  delete(id: string): Promise<Boolean> {
-    throw new Error("Method not implemented.");
+  async delete(_id: string): Promise<Boolean> {
+    return await this.post
+      .deleteOne({ _id })
+      .then(res => true)
+      .catch(err => false);
   }
-  findById(id: string): Promise<PostModel | null> {
-    throw new Error("Method not implemented.");
+  async findById(_id: string): Promise<PostModel | null> {
+    return await this.post.findById({ _id });
   }
   async findAll(): Promise<PostModel[]> {
-    return await this.model.post.find();
+    return await this.post.find();
   }
 }

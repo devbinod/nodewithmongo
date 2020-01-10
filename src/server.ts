@@ -13,6 +13,8 @@ import { JWTMiddleWare } from "./middleware/jwt.middleware";
 import { MiddleWare } from "./middleware/middleware";
 import { DBConfig } from "./config/DBConfig";
 import { CommentRouter } from "./routes/commentRouter.router";
+import { LikeDislikeController } from "./controllers/likeDislike.controller";
+import { LikeDislikeRouter } from "./routes/likeDislikeRouter.router";
 
 let options = {
   swaggerDefinition: {
@@ -42,6 +44,7 @@ let initializeRoute = (_: Request, __: Response, next: any) => {
   new UserRoute(app);
   new PostRouter(app);
   new CommentRouter(app);
+  new LikeDislikeRouter(app);
   next();
 };
 
