@@ -79,7 +79,10 @@ export class LoginController {
         message: "Invalid password"
       });
 
-    const token = jwt.sign({ _id: user?._id }, TOKEN_SECRET);
+    const token = jwt.sign(
+      { _id: user?._id, exp: Math.floor(Date.now() / 1000) + 60 * 60 },
+      TOKEN_SECRET
+    );
     res
       .header("x-header-token", token)
       .status(SUCCESS)
