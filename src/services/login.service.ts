@@ -3,8 +3,9 @@ import mongoose from "mongoose";
 import { UserModel } from "../models/user";
 import { userSchema } from "../schemas/user.schemas";
 import { USER } from "../schemas/schemaConst";
+import { LoginInterface } from "./common/login.interface";
 
-export class LoginService {
+export class LoginService implements LoginInterface<UserModel> {
   private model: IModel;
 
   constructor() {

@@ -1,6 +1,6 @@
 import { Application } from "express";
 import { PostController } from "../controllers/post.controller";
-import { BaseRouter } from "./baseRouter.router";
+import { BaseRouter } from "./common/baseRouter.router";
 
 export class PostRouter implements BaseRouter {
   private app: Application;

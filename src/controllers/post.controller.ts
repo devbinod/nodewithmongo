@@ -18,7 +18,7 @@ export class PostController {
   };
 
   save = async (req: Request, res: Response) => {
-    const resp = await this.postService.add(req.body);
+    const resp = await this.postService.save(req.body);
     res.status(CREATED);
     res.send(resp);
   };

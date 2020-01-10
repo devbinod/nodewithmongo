@@ -11,9 +11,7 @@ export class CommentService implements BaseInterface<CommentModel> {
     this.model.comment = commentSchema;
   }
 
-  async add(model: CommentModel): Promise<CommentModel> {
-    console.log(`called..................`);
-    console.log(model);
+  async save(model: CommentModel): Promise<CommentModel> {
     return new this.model.comment(model).save();
   }
   async update(_id: string, model: CommentModel): Promise<CommentModel | null> {

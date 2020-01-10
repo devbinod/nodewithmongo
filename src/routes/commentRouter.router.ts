@@ -1,4 +1,4 @@
-import { BaseRouter } from "./baseRouter.router";
+import { BaseRouter } from "./common/baseRouter.router";
 import { Application } from "express";
 import { CommentController } from "../controllers/comment.controller";
 

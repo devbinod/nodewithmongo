@@ -12,7 +12,7 @@ export class PostService implements BaseInterface<PostModel> {
     this.model.post = postSchema;
   }
 
-  async add(t: PostModel): Promise<PostModel> {
+  async save(t: PostModel): Promise<PostModel> {
     return await new this.model.post(t).save();
   }
   update(id: string, t: PostModel): Promise<PostModel | null> {

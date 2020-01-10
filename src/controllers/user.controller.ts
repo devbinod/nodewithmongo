@@ -41,7 +41,7 @@ export class UserController {
         .status(INTERNAL_SERVER_ERROR)
         .send({ error: error.details[0].message });
     } else {
-      const resp = await this.userService.add(req.body);
+      const resp = await this.userService.save(req.body);
       res.status(CREATED);
       res.send(resp);
     }

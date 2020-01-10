@@ -29,7 +29,7 @@ export class CommentController {
   };
   save = async (req: Request, res: Response) => {
     console.log(req.body);
-    const comment = await this.commentService.add(req.body);
+    const comment = await this.commentService.save(req.body);
     res.status(CREATED).json({
       commentId: `comment created with ${comment._id} id`
     });

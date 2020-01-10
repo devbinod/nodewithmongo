@@ -1,6 +1,6 @@
 import { Application } from "express";
 import { LoginController } from "../controllers/login.controller";
-import { BaseRouter } from "./baseRouter.router";
+import { BaseRouter } from "./common/baseRouter.router";
 
 export class LoginRouter implements BaseRouter {
   private app: Application;

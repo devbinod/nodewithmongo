@@ -46,7 +46,7 @@ export class LoginController {
 
     const userModel: UserModel = req.body;
     userModel.password = hashPassword;
-    const user = await this.userService.add(req.body);
+    const user = await this.userService.save(req.body);
     return res.status(CREATED).json({
       user: user._id
     });

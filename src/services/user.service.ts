@@ -18,7 +18,7 @@ export class UserService implements BaseInterface<UserModel> {
       .then(() => true)
       .catch(() => false);
   }
-  async add(t: UserModel): Promise<UserModel> {
+  async save(t: UserModel): Promise<UserModel> {
     return await new this.model.user(t).save();
   }
   async update(id: string, t: UserModel): Promise<UserModel | null> {
