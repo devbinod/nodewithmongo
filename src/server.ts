@@ -30,7 +30,8 @@ let options = {
         in: "header",
         name: "Authorization",
         description: ""
-      }
+      },
+      value: "Bearer <JWT>"
     }
   },
   basedir: __dirname, //app absolute path
