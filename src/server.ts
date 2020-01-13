@@ -55,6 +55,6 @@ let initializeMiddleWare = (_: Request, __: Response, next: any) => {
 app.use(initializeMiddleWare);
 app.use(initializeRoute);
 
-app.listen(process.env.PORT || PORT, () => {
-  console.log(`Application is running on  ${PORT}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Application is running on  ${process.env.PORT}`);
 });

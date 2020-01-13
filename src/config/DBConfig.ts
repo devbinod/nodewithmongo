@@ -1,4 +1,4 @@
-const MONGODB_CONNECTION: string = "mongodb://localhost:27017/socialmedia";
+const MONGODB_CONNECTION: any = process.env.DEV_DATABASE_URL;
 import mongoose from "mongoose";
 export class DBConfig {
   constructor() {
