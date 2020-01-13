@@ -2,10 +2,8 @@ import app from "./app";
 const expressSwagger = require("express-swagger-generator")(app);
 
 import { PORT } from "./config/constants";
-import { LoginController } from "./controllers/login.controller";
-import { PostController } from "./controllers/post.controller";
-import { UserController } from "./controllers/user.controller";
-import express, { Router, Request, Response } from "express";
+import "dotenv/config";
+import { Request, Response } from "express";
 import { UserRoute } from "./routes/userRouter.router";
 import { PostRouter } from "./routes/postRouter.router";
 import { LoginRouter } from "./routes/loginRouter.router";
@@ -13,7 +11,6 @@ import { JWTMiddleWare } from "./middleware/jwt.middleware";
 import { MiddleWare } from "./middleware/middleware";
 import { DBConfig } from "./config/DBConfig";
 import { CommentRouter } from "./routes/commentRouter.router";
-import { LikeDislikeController } from "./controllers/likeDislike.controller";
 import { LikeDislikeRouter } from "./routes/likeDislikeRouter.router";
 
 let options = {
