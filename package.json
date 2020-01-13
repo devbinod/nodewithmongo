@@ -2,11 +2,12 @@
   "name": "nodemongoo",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "tsc && node build/server.js",
-    "dev": "./node_modules/nodemon/bin/nodemon.js"
+    "dev": "./node_modules/nodemon/bin/nodemon.js",
+    "prod": "build/server.js"
   },
   "keywords": [],
   "author": "",
