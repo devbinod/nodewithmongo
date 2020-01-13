@@ -9,9 +9,11 @@ export class DBConfig {
   }
 
   openConnection = async () => {
-    await mongoose.connect(MONGODB_CONNECTION).catch(err => {
-      console.log(`Oops something went wrong ${err}`);
-    });
+    await mongoose
+      .connect(MONGODB_CONNECTION, { useNewUrlParser: true })
+      .catch(err => {
+        console.log(`Oops something went wrong ${err}`);
+      });
 
     console.log(`Successfully`);
   };
