@@ -22,6 +22,16 @@ export class PostRouter implements BaseRouter {
      * @returns {Error}  default - Unexpected error
      */
     this.app.get("/v1/posts", this.postController.findAll);
+ /**
+     * This function comment is parsed by doctrine
+     * @route GET /posts/{id}
+     * @group Post - Operations about Post
+     * @param {string} id.path.required
+     * @returns {object} 200 - An array of Post info
+     * @returns {Error}  default - Unexpected error
+     */
+
+    this.app.get("/v1/posts/:id", this.postController.findById)
 
     /**
      * @typedef Post
@@ -36,14 +46,39 @@ export class PostRouter implements BaseRouter {
     /**
      * This function comment is parsed by doctrine
      * @route POST /posts
-     * @group Post - Operations about user
+     * @group Post - Operations about Post
      * @param {Post.model} Post.body.required - the new point
-     * @operationId retrieveUserInfo
+     * @operationId retrievePostInfo
      * @produces application/json application/xml
      * @consumes application/json application/xml
-     * @returns {Response.model} 201 - An array of user info
+     * @returns {Response.model} 201 - An array of Post info
      * @returns {Post.model}  default - Unexpected error
      */
     this.app.post("/v1/posts", this.postController.save);
+
+    /**
+     * This function comment is parsed by doctrine
+     * @route DELETE /posts/{id}
+     * @group Post - Operations about Post
+     * @param {string} id.path.required
+     * @returns {object} 204 - An array of POST info
+     * @returns {Error}  default - Unexpected error
+     */
+
+    this.app.delete("/v1/posts/:id",this.postController.delete)
+   /**
+     * This function comment is parsed by doctrine
+     * @route PUT /posts/{id}
+     * @group Post - Operations about post
+     * @param {string} id.path.required
+     * @param {POST.model} POST.body.required - the new point
+     * @operationId retrievePOSTInfo
+     * @produces application/json application/xml
+     * @consumes application/json application/xml
+     * @returns {Response.model} 201 - An array of user info
+     * @returns {POST.model}  default - Unexpected error
+     */
+
+    this.app.put("/v1/posts/:id",this.postController.update)
   }
 }
