@@ -20,7 +20,10 @@ export class LikeDislikeRouter implements BaseRouter {
      * @returns {object} 200 - An array of LikeDislike info
      * @returns {Error}  default - Unexpected error
      */
-    this.app.get("/v1/likedislikes", this.likeDislikeController.findAll);
+    this.app.get(
+      "/v1/posts/:postId/likedislikes",
+      this.likeDislikeController.findAll
+    );
     /**
      * This function LikeDislike is parsed by doctrine
      * @route GET /likedislikes/{id}
@@ -29,7 +32,10 @@ export class LikeDislikeRouter implements BaseRouter {
      * @returns {object} 200 - An single of LikeDislike info
      * @returns {Error}  default - Unexpected error
      */
-    this.app.get("/v1/likedislikes/:id", this.likeDislikeController.findById);
+    this.app.get(
+      "/v1/posts/:postId/likedislikes/:id",
+      this.likeDislikeController.findById
+    );
 
     /**
      * This function comment is parsed by doctrine
@@ -43,7 +49,10 @@ export class LikeDislikeRouter implements BaseRouter {
      * @returns {Response.model} 201 - An array of LikeDislike info
      * @returns {LikeDislike.model}  default - Unexpected error
      */
-    this.app.put("/v1/likedislikes/:id", this.likeDislikeController.update);
+    this.app.put(
+      "/v1/posts/:postId/likedislikes/:id",
+      this.likeDislikeController.update
+    );
     /**
      * This function LikeDislike is parsed by doctrine
      * @route DELETE /likedislikes/{id}
@@ -52,7 +61,10 @@ export class LikeDislikeRouter implements BaseRouter {
      * @returns {object} 204 - An array of LikeDislike info
      * @returns {Error}  default - Unexpected error
      */
-    this.app.delete("/v1/likedislikes/:id", this.likeDislikeController.delete);
+    this.app.delete(
+      "/v1/posts/:postId/likedislikes/:id",
+      this.likeDislikeController.delete
+    );
 
     /**
      * @typedef LikeDislike
@@ -83,6 +95,9 @@ export class LikeDislikeRouter implements BaseRouter {
      * @returns {Response.model} 201 - An array of LikeDislike info
      * @returns {LikeDislike.model}  default - Unexpected error
      */
-    this.app.post("/v1/likedislikes", this.likeDislikeController.save);
+    this.app.post(
+      "/v1/posts/:postId/likedislikes",
+      this.likeDislikeController.save
+    );
   }
 }

@@ -7,6 +7,7 @@ import {
   DELETED,
   INTERNAL_SERVER_ERROR
 } from "../statuscode/statuscode";
+import { LikeDislikeModel } from "../models/likeDislike";
 
 export class LikeDislikeController {
   private likeDislikeService: LikeDislikeService;
@@ -25,15 +26,23 @@ export class LikeDislikeController {
   };
 
   save = async (req: Request, res: Response) => {
-    const likeDislike = await this.likeDislikeService.save(req.body);
+    let likeDislike: LikeDislikeModel = req.body;
+    likeDislike.postId = req.params.postId;
+    console.log(`like `, likeDislike);
+    likeDislike = await this.likeDislikeService.save(req.body);
     res.status(CREATED).json(`new likedislike created with ${likeDislike._id}`);
   };
 
   update = async (req: Request, res: Response) => {
-    const likeDislike = await this.likeDislikeService.update(
-      req.params.id,
-      req.body
-    );
+    let likeDislike: LikeDislikeModel | null = req.body;
+    if (likeDislike != null) {
+      likeDislike.postId = req.params.postId;
+
+      likeDislike = await this.likeDislikeService.update(
+        req.params.id,
+        likeDislike
+      );
+    }
     res.status(UPDATED).json(likeDislike);
   };
 
