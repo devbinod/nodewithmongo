@@ -15,8 +15,10 @@ export class LikeDislikeController {
     this.likeDislikeService = new LikeDislikeService();
   }
 
-  findAll = async (_: Request, res: Response) => {
-    const likeDislikeList = await this.likeDislikeService.findAll();
+  findAll = async (req: Request, res: Response) => {
+    const likeDislikeList = await this.likeDislikeService.findByPostId(
+      req.params.postId
+    );
     res.status(SUCCESS).json(likeDislikeList);
   };
 

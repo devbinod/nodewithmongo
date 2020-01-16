@@ -12,8 +12,6 @@ export class LikeDislikeService implements BaseInterface<LikeDislikeModel> {
   }
 
   async save(model: LikeDislikeModel): Promise<LikeDislikeModel> {
-    console.log(model);
-    console.log("called service");
     return await new this.likeDislike(model).save();
   }
   async update(
@@ -34,5 +32,9 @@ export class LikeDislikeService implements BaseInterface<LikeDislikeModel> {
   }
   async findAll(): Promise<LikeDislikeModel[]> {
     return await this.likeDislike.find();
+  }
+
+  async findByPostId(postId: string): Promise<LikeDislikeModel[]> {
+    return await this.likeDislike.find({ postId });
   }
 }
