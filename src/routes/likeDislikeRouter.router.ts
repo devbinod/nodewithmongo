@@ -83,6 +83,6 @@ export class LikeDislikeRouter implements BaseRouter {
      * @returns {Response.model} 201 - An array of LikeDislike info
      * @returns {LikeDislike.model}  default - Unexpected error
      */
-    this.app.post("/v1/likedislikes", this.likeDislikeController.findAll);
+    this.app.post("/v1/likedislikes", this.likeDislikeController.save);
   }
 }

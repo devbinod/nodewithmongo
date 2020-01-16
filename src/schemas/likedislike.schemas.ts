@@ -4,8 +4,14 @@ import { LikeDislikeModel } from "../models/likeDislike";
 
 const schema: Schema = new Schema(
   {
-    isLike: Boolean,
-    isDislike: Boolean,
+    isLike: {
+      type: Boolean,
+      default: false
+    },
+    isDislike: {
+      type: Boolean,
+      default: false
+    },
     postId: { type: Schema.Types.ObjectId, ref: `${POST}` },
     userId: { type: Schema.Types.ObjectId, ref: `${USER}` }
   },
